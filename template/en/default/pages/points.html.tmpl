@@ -1,0 +1,78 @@
+[%# -*- mode: html -*- %]
+[%# The contents of this file are subject to the Mozilla Public
+  # License Version 1.1 (the "License"); you may not use this file
+  # except in compliance with the License. You may obtain a copy of
+  # the License at http://www.mozilla.org/MPL/
+  #
+  # Software distributed under the License is distributed on an "AS
+  # IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+  # implied. See the License for the specific language governing
+  # rights and limitations under the License.
+  #
+  # The Initial Developer of the Original Code is Elijah Newren
+  #
+  #%]
+
+[%# INTERFACE:
+  # This template has no interface.
+  #%]
+
+[% PROCESS global/variables.none.tmpl %]
+
+[% PROCESS global/header.html.tmpl
+    title = "The 'Points' statistic" %]
+
+<p>
+Points is a fun statistic in [% terms.Bugzilla %].  It roughly
+measures how active you are in this [% terms.Bugzilla %] installation,
+and could be thought of as a form of aggregate-over-time score from
+the <a href="reports/weekly-bug-summary.cgi">Weekly [% terms.Bug %]
+Summary</a>.  The scoring mechanism is subject to the whim of the
+bugmasters, so don't take too much stock in it.  But it makes for a
+fun competition, by yourself or with others.  How many points do <a
+href="describeuser.cgi"><i>you</i></a> have?  Just a little more work
+could get you up to the next level.  :-)
+</p>
+
+<p>
+You can compare yourself to how many points other people have at the
+<a href="reports/points.cgi">users per points</a> page.  Watch out,
+though, if you try to inflate your score without doing <i>useful</i>
+work in [% terms.Bugzilla %], you may find your score manually altered
+in a very negative way.  If lots of people do this, we'll just alter
+the entire thing.  In particular, we are already considering replacing
+showing of points on each [% terms.bug %] page by some kind of <a
+href="show_bug.cgi?id=325562">more general descriptions</a>.
+</p>
+
+<p>
+The original idea behind points was that having a rough measure of how
+active a person was in [% terms.Bugzilla %] might help triagers
+(bugsquad volunteers) who are getting started by helping them know:
+<ul>
+  <li> which [% terms.bugs %] to avoid because they are either filed
+       by or being handled by an experienced user</li>
+  <li> whose comments are more likely to be worth learning from</li>
+</ul>
+but that is a somewhat error prone use of points as expert hackers or
+heavy users of distro [% terms.bug %] trackers might not have done as
+much in Gnome [% terms.Bugzilla %] and thus their points score might
+be 20 below what their 'experience' level might really reflect.  A
+much more important criteria to show is whether the person is a
+developer of the relevant module or the reporter of the given [%
+terms.bug %] (both of which are currently shown in addition to
+points).  However, even as an error prone rough estimate, it's still
+better than no information and might still be useful for such
+purposes.  Just realize that if you use it this way it's no silver
+bullet.
+</p>
+
+<p>
+The current formula for points (remember, this is subject to change on
+the whim of the bugmasters) is:
+  <blockquote>
+    log_10(1 + #comments) + log_2(1 + #bugs_closed) + log_2(1 + #bugs_reported)
+  </blockquote>
+</p>
+
+[% PROCESS global/footer.html.tmpl %]

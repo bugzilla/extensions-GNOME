@@ -1,0 +1,12 @@
+
+[% DEFAULT
+  classification.is_gnome = 0
+%]
+
+  <tr>
+    <th align="right"><label for="is_gnome">GNOME:</label></th>
+    <td><input name="is_gnome" type="checkbox"
+               value="1" [% 'checked="checked"' IF classification.is_gnome %]></td>
+  </tr>
+
+

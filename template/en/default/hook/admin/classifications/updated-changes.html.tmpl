@@ -1,0 +1,10 @@
+
+[% IF changes.is_gnome.defined %]
+  <p>
+  Updated is_gnome from
+  [%+ changes.is_gnome.0 FILTER html %] to
+  [%+ classification.is_gnome FILTER html %].
+  </p>
+[% END %]
+
+

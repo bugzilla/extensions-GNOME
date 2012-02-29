@@ -1,0 +1,124 @@
+[%# -*- mode: html -*- %]
+[%# The contents of this file are subject to the Mozilla Public
+  # License Version 1.1 (the "License"); you may not use this file
+  # except in compliance with the License. You may obtain a copy of
+  # the License at http://www.mozilla.org/MPL/
+  #
+  # Software distributed under the License is distributed on an "AS
+  # IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+  # implied. See the License for the specific language governing
+  # rights and limitations under the License.
+  #
+  # The Initial Developer of the Original Code is Elijah Newren
+  #
+  #%]
+
+[%# INTERFACE:
+  # This template has no interface.
+  #%]
+
+[% PROCESS global/variables.none.tmpl %]
+
+[% PROCESS global/header.html.tmpl
+    title = "About Bugzilla email" %]
+
+<p> 
+This page can help you
+<ul>
+  <li>Understand why you received email.</li>
+  <li>Learn how to stop receiving email.</li>
+  <li>Figure out how to change the conditions causing you receive
+      email, including turning email notifications off entirely.</li>
+  <li>Explain why you can't respond via email.</li>
+  <li>How you can get help if things don't seem to be working.</li>
+</ul>
+</p>
+
+<b>Why you receive email</b>
+<p>
+[% terms.Bugzilla %] sends out email to notify you of changes to [% terms.bugs %] you
+reported, modified, put yourself on the cc list, etc.  The full list
+of reasons can be found at <a
+href="userprefs.cgi">[% Param("urlbase") %]userprefs.cgi</a>.
+There is [% terms.abug %] in the system in that it defaults to sending out mail
+when other [% terms.bugs %] are marked as a duplicate of the [% terms.bug %] you are watching;
+we intend to make that a configuration option defaulting to off.
+Sorry for the annoyance.
+</p>
+
+<b>How to stop receiving email</b>
+<p>
+If you are on the CC (carbon copy) list of any [% terms.Bugzilla %] [% terms.bug %] report
+you can easily remove yourself. You receive a link 
+to the corresponding report in the last line of every email you get from 
+[% terms.Bugzilla %]. The link is also at the top. In order to unsubscribe
+open the report, scroll down to the bottom, select your email address within
+the  CC: box, tick <i>Remove selected CCs</i> and press the 
+"Submit Changes" button. <br>
+
+For other cases please refer to the comprehensive email settings 
+mentioned below. <br>
+
+Please keep in mind that we may depend on additional information from you to
+successfully tackle a software problem we all would like to see resolved.
+</p>
+
+<b>How to change when (or if) you get email.</b>
+<p>
+Go to <a
+href="userprefs.cgi?tab=email">[% Param("urlbase") %]userprefs.cgi?tab=email</a>
+and unselect (or select) any relevant boxes for when you don't want to
+get email.  If you want to disable email entirely, click on the
+"Disable All Mail" button. After any changes, make sure to press the
+"Submit Changes" button at the bottom of the page.
+</p>
+
+<b>Why you can't respond via email.</b>
+<p>
+Our version of [% terms.Bugzilla %] is simply a modified (albeit heavily)
+version of mozilla's <a href="http://www.bugzilla.org/">bugzilla</a>.  They
+provide no program to analyze emails, add relevant messages to the
+[% terms.Bugzilla %] database, and send out updated emails to the relevant
+individuals.  We haven't written one either.  Part of the reason for
+this is that it's a really hard problem:
+</p>
+<ul>
+  <li>There are lots of braindead mail clients that send emails in
+      both text and html. [% terms.Bugzilla %] comments should be text only.</li>
+  <li>Email clients and people often stick long footers on emails,
+      which would reduce readability unless they were removed.</li>
+  <li>People and email clients are horribly inconsistent about quoting
+      previous text, making it hard to prevent each comment from
+      including several previous comments with zillions of levels of
+      quoting.  Such a scenario would make [% terms.bugs %] completely unreadable
+      with the web interface.</li>
+  <li>People do stupid braindead things like sending out-of-office
+      auto-replies to [% terms.Bugzilla %] messages; we don't want that spam being
+      archived and showing up in everyone's inboxes.  (So any program
+      analyzing emails needs to be able to discover these messages and
+      automatically disable the person's account.)</li>
+  <li>The standard issues -- how does one determine which fields
+      should be changed via an email?  How does one differentiate that
+      from normal text?  When [% terms.abug %] is filed against [% terms.Bugzilla %] itself,
+      how do we differentiate comments explaining how to send an email
+      in a way to change fields in [% terms.abug %] and actual attempt to change
+      fields within that bug?</li>
+  <li>Probably several more issues that we haven't thought of
+      yet.</li>
+</ul>
+<p>
+What this means is that if you want to send a response to someone, you
+need to use the webform by going to the link specified in the email
+sent to you.  If you are having problems with the system itself,
+contact the bugsquad or bugmasters (see last section of this page).
+Any email responses you send at this time will be discarded.
+</p>
+
+<b>Where to go for further help</b>
+<p>
+If things aren't working or you have a question not answered here
+about the email system, feel free to email gnome-bugsquad AT gnome dot
+org or bugmaster AT gnome dot org.
+</p>
+
+[% PROCESS global/footer.html.tmpl %]

@@ -1,0 +1,180 @@
+[%# -*- mode: html -*- %]
+[%# The contents of this file are subject to the Mozilla Public
+  # License Version 1.1 (the "License"); you may not use this file
+  # except in compliance with the License. You may obtain a copy of
+  # the License at http://www.mozilla.org/MPL/
+  #
+  # Software distributed under the License is distributed on an "AS
+  # IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+  # implied. See the License for the specific language governing
+  # rights and limitations under the License.
+  #
+  # The Original Code is the Bugzilla Bug Tracking System.
+  #
+  # The Initial Developer of the Original Code is Olav Vitters
+  # Corporation. Portions created by Netscape are
+  # Copyright (C) 1998 Olav Vitters Corporation. All
+  # Rights Reserved.
+  #
+  #%]
+
+[%# INTERFACE:
+  # This template has no interface.
+  #%]
+
+[% PROCESS global/variables.none.tmpl %]
+
+[% PROCESS global/header.html.tmpl
+    title = "Reports" %]
+
+
+<h3>Categories</h3>
+  <ul>
+    <li> <a href="[% self_url FILTER html %]#generic">Generic Gnome reports</a> </li>
+    <!-- 
+   <li> <a href="[% self_url FILTER html %]#byversion">Reports organized
+      by version</a> </li> -->
+    <li> <a href="[% self_url FILTER html %]#explain">Explanation of [% terms.bugzilla %] terms and fields</a></li>
+  </ul>
+
+<h2>Generic Gnome reports<a name="generic"></a></h2>
+  <ul>
+    <li>
+      <a href="page.cgi?id=weekly-bug-summary.html">Summary of [%
+      terms.bug %] activity for the last week</a>.
+    </li>
+    <li>
+      <a href="duplicates.cgi">Frequently (and recently)
+      duplicated [% terms.bugs %]</a>
+    </li>
+    <li>
+      <a href="page.cgi?id=popular-traces.html">Frequently Duplicated Stack 
+        Traces</a>
+    </li>
+    <!--
+    <li>
+      Products with the <a href="reports/patch-diligence-report.cgi">
+      fewest unreviewed patches per total patches</a>.
+    </li>
+    -->
+  <!--
+    <li>Unreviewed patches:
+      <ul>
+        <li>
+          <a href="reports/patch-report.cgi"> Comprehensive listing</a> (or by
+          <a href="reports/patch-status.cgi"> product</a>).
+        </li>
+      </ul>
+    </li>
+  -->
+    <li>
+      <a href="query.cgi?format=report-table">Generic tabular reports</a>
+    </li>
+    <li>
+      <a href="query.cgi?format=report-graph">Generic graphical reports</a>
+    </li>
+  </ul>
+
+<h2>Reports for Potential Contributors<a name="contributors"></a></h2>
+  <ul>
+    <li>[% terms.Bugs %] to <a href="http://live.gnome.org/Bugsquad/TriageGuide">triage</a></li>
+      <!--
+      <ul>
+        <li>
+          <a href="reports/core-bugs-today.cgi">[% terms.Bugs %] filed
+          today</a> against components listed at <a href=
+          "http://www.gnome.org/start/unstable/modules/">
+          gnome.org/start/</a> as core GNOME components.  </li>
+        <li>
+          <a href="reports/needinfo-updated.cgi">NEEDINFO reports
+          which have been updated</a> (e.g. given new info).
+        </li>
+        <li>
+          <a href="reports/unconfirmed-bugs.cgi">Products with the
+          most UNCONFIRMED [% terms.bugs %]</a>. Good starting point
+          for new bughunters looking to triage [% terms.bugs %].
+        </li>
+        <li>
+          <a href="reports/check-assignedto.cgi">[% terms.Bugs %]
+          likely not correctly assigned to the correct owner</a>.
+          Shows [% terms.bugs %] owned by the default owner of another
+          component.
+        </li>
+      </ul>
+      -->
+    <li>Finding tasks to work on</li>
+      <ul>
+        <!--
+        <li>
+          [% terms.Bugs %] marked by developers as being <a
+          href="reports/gnome-love.cgi">good tasks for new
+          developers</a>
+        </li>
+        -->
+        <li>
+          Looking at <a href="browse.cgi">product overviews</a>
+        </li>
+        <li>
+          <a href="http://live.gnome.org/JoinGnome">Other ways to help
+          Gnome</a>
+        </li>
+      </ul>
+  </ul>
+
+<!--
+<h2>Reports organized by version<a name="byversion"></a></h2>
+  <ul>
+    <li> Open [% terms.bugs %] for specific GNOME versions, broken down by
+         product, component, and developer:
+      <ul>
+        <li><a href="reports/gnome-218-report.html">GNOME 2.17/2.18</a> </li>
+        <li><a href="reports/gnome-220-report.html">GNOME 2.19/2.20</a> </li>
+        <li><a href="reports/gnome-222-report.html">GNOME 2.21/2.22</a> </li>
+      </ul>
+    </li>
+    <li> Summary of [% terms.bug %] activity for the last week, by GNOME version:
+      <ul>
+        <li> <a href="reports/weekly-bug-summary.cgi?version=2.17/2.18">GNOME 2.17/2.18</a></li>
+        <li> <a href="reports/weekly-bug-summary.cgi?version=2.19/2.20">GNOME 2.19/2.20</a></li>
+        <li> <a href="reports/weekly-bug-summary.cgi?version=2.21/2.22">GNOME 2.21/2.22</a></li>
+      </ul>
+    </li>
+  </ul>
+-->
+
+<h2>Explanation of various [% terms.bugzilla %] terms and fields<a name="explain"></a></h2>
+  <ul>
+    <li>
+      <a href="describecomponents.cgi">Products</a>
+    </li>
+    <li>
+      <a href="page.cgi?id=fields.html">[% terms.Bug %] Fields</a>
+      <ul>
+        <li> 
+          <a href="page.cgi?id=fields.html#status">[% terms.Bug %] status</a>
+        </li>
+        <li>
+          <a href="page.cgi?id=fields.html#resolution">Resolution</a>
+        </li>
+        <li>
+          <a href="page.cgi?id=fields.html#severity">Severities</a>
+        </li>
+        <li>
+          <a href="page.cgi?id=fields.html#priority">Priorities</a>
+        </li>
+        <li>
+          <a href="page.cgi?id=fields.html#gnome_version">Gnome Version</a>
+        </li>
+        <li>
+          <a href="page.cgi?id=fields.html#gnome_target">Gnome Target Milestone</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="describekeywords.cgi">Keywords</a>
+    </li>
+  </ul>
+
+If you have questions or suggestions for new reports, email the [% IF user.id %]<a href="mailto:bugmaster@gnome.org">[% END %] Gnome bugmasters.[% IF user.id %]</a>[% END %]<br><br>
+
+[% PROCESS global/footer.html.tmpl %]
