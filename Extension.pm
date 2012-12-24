@@ -119,6 +119,9 @@ sub config_modify_panels {
 
     my ($search_allow_no_criteria) = grep($_->{name} eq 'search_allow_no_criteria', @$query_params);
     $search_allow_no_criteria->{default} = 0;
+
+    my ($quip_list_entry_control) = grep($_->{name} eq 'quip_list_entry_control', @$query_params);
+    $quip_list_entry_control->{default} = 'closed';
 }
 
 sub object_columns {
