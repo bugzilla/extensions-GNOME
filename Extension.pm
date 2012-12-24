@@ -268,11 +268,11 @@ sub bugmail_recipients {
 
     # Don't email to @gnome.bugs and related
 
-    foreach my $user_id (keys %recipients) {
-        $users{$user_id} ||= new Bugzilla::User($user_id);
-        my $user = $users{$user_id};
+    foreach my $user_id (keys %{$recipients}) {
+        $users->{$user_id} ||= new Bugzilla::User($user_id);
+        my $user = $users->{$user_id};
 
-        delete $recipients{$user_id} if $user->email =~ /\.bugs$/;
+        delete $recipients->{$user_id} if $user->email =~ /\.bugs$/;
     }
 }
 
