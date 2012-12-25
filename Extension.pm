@@ -120,9 +120,10 @@ sub config_modify_panels {
 
     my ($search_allow_no_criteria) = grep($_->{name} eq 'search_allow_no_criteria', @$query_params);
     $search_allow_no_criteria->{default} = 0;
-
     my ($quip_list_entry_control) = grep($_->{name} eq 'quip_list_entry_control', @$query_params);
     $quip_list_entry_control->{default} = 'closed';
+    my ($mostfreqthreshold) = grep($_->{name} eq 'mostfreqthreshold', @$query_params);
+    $mostfreqthreshold->{default} = 5;
 
     # - bugfields section
     $query_params = $panels->{'bugfields'}->{params};
@@ -134,6 +135,13 @@ sub config_modify_panels {
     $useqacontact->{default} = 1;
     my ($usestatuswhiteboard) = grep($_->{name} eq 'usestatuswhiteboard', @$query_params);
     $usestatuswhiteboard->{default} = 1;
+
+    # - groupsecurity section
+    $query_params = $panels->{'groupsecurity'}->{params};
+    my ($insidergroup) = grep($_->{name} eq 'insidergroup', @$query_params);
+    $insidergroup->{default} = 'admin';
+    my ($timetrackinggroup) = grep($_->{name} eq 'timetrackinggroup', @$query_params);
+    $timetrackinggroup->{default} = '';
 }
 
 sub object_columns {
