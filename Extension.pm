@@ -115,6 +115,7 @@ sub config_modify_panels {
     my $panels = $args->{panels};
 
     # Change some defaults to match GNOME requirements
+    # - query section
     my $query_params = $panels->{'query'}->{params};
 
     my ($search_allow_no_criteria) = grep($_->{name} eq 'search_allow_no_criteria', @$query_params);
@@ -122,6 +123,17 @@ sub config_modify_panels {
 
     my ($quip_list_entry_control) = grep($_->{name} eq 'quip_list_entry_control', @$query_params);
     $quip_list_entry_control->{default} = 'closed';
+
+    # - bugfields section
+    $query_params = $panels->{'bugfields'}->{params};
+    my ($useclassification) = grep($_->{name} eq 'useclassification', @$query_params);
+    $useclassification->{default} = 1;
+    my ($usetargetmilestone) = grep($_->{name} eq 'usetargetmilestone', @$query_params);
+    $usetargetmilestone->{default} = 1;
+    my ($useqacontact) = grep($_->{name} eq 'useqacontact', @$query_params);
+    $useqacontact->{default} = 1;
+    my ($usestatuswhiteboard) = grep($_->{name} eq 'usestatuswhiteboard', @$query_params);
+    $usestatuswhiteboard->{default} = 1;
 }
 
 sub object_columns {
